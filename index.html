@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Las Matemáticas Mágicas de Lumi - Sin Lagunas</title>
+<title>Las Matemáticas Mágicas de Lumi - Móvil y Tablet</title>
 <style>
 :root{
   --rosa:#ff7eb6;--rosa2:#ff4d9d;--morado:#7b3fa6;--lila:#cdb4ff;--menta:#9ef0c9;
@@ -24,6 +24,64 @@ body{background:linear-gradient(160deg,var(--bg1),var(--bg2) 56%,var(--bg3));tra
 #mascot{position:fixed;left:10px;bottom:8px;z-index:8;display:flex;align-items:flex-end;gap:6px;max-width:82vw;pointer-events:none}#lumi{font-size:clamp(48px,13vw,82px);filter:drop-shadow(0 6px 6px var(--sombra))}#lumi.happy{animation:jump .6s ease}@keyframes jump{40%{transform:translateY(-25px) rotate(6deg)}}#bubble{background:#fff;border:3px solid var(--lila);border-radius:18px;box-shadow:0 5px 0 var(--sombra);padding:8px 12px;max-width:65vw;font-size:clamp(12px,3.3vw,16px)}
 .overlay{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px;padding:18px;background:linear-gradient(160deg,var(--bg1),var(--bg2) 56%,var(--bg3))}.overlay h1{margin:0;color:#fff;font-size:clamp(30px,7.5vw,58px);line-height:1.05;text-shadow:0 4px 0 var(--rosa2),0 8px 14px var(--sombra)}.overlay p{max-width:620px;background:rgba(255,255,255,.62);padding:10px 16px;border-radius:20px;font-size:clamp(14px,3.6vw,19px)}.bigUni{font-size:clamp(84px,23vw,150px);animation:bob 2.3s ease-in-out infinite;filter:drop-shadow(0 12px 12px var(--sombra))}@keyframes bob{50%{transform:translateY(-18px) rotate(3deg)}}.bigBtn{cursor:pointer;border:none;border-radius:999px;padding:15px 42px;color:#fff;font-family:inherit;font-size:clamp(25px,6vw,40px);font-weight:900;background:linear-gradient(180deg,#ff9ed0,var(--rosa2));box-shadow:0 10px 0 #c92c79,0 16px 22px var(--sombra)}.smallBtn{cursor:pointer;border:none;border-radius:999px;padding:8px 15px;background:#fff;color:var(--morado);font-family:inherit;font-weight:bold;box-shadow:0 4px 0 var(--sombra)}#big{display:none;background:rgba(60,20,80,.45);backdrop-filter:blur(2px)}#bigMsg{color:#fff;font-weight:900;font-size:clamp(32px,8.5vw,66px);text-shadow:0 4px 0 var(--rosa2),0 8px 16px var(--sombra)}#bigSub{color:#fff;font-size:clamp(17px,4.7vw,28px);font-weight:bold;max-width:90vw}#confetti{position:fixed;inset:0;z-index:35;pointer-events:none;overflow:hidden}.conf{position:absolute;font-size:30px;animation:fall linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
 #parentPanel{display:none;position:fixed;inset:auto 8px 8px auto;z-index:40;max-width:min(540px,96vw);background:#fff;border:4px solid var(--lila);border-radius:22px;box-shadow:0 10px 0 var(--sombra);padding:14px;text-align:left}.mini{font-size:13px;line-height:1.3}.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:9px}
+button,.roundBtn,.opt,#replay{touch-action:manipulation;-webkit-touch-callout:none}
+
+
+/* ===== Ajustes v05: pensado para movil y tablet ===== */
+:root{--tap-min:clamp(92px,26vw,150px);}
+#stage{justify-content:flex-start;padding:6px 8px max(12px,env(safe-area-inset-bottom));gap:6px;}
+#card{width:min(760px,98vw);min-height:calc(100dvh - 118px);display:flex;flex-direction:column;justify-content:flex-start;padding:12px 10px 14px;border-radius:28px;}
+#prompt{font-size:clamp(24px,7.2vw,42px);margin:6px 2px 4px;}
+#visual{gap:12px;margin:10px 0 8px;flex:1 0 auto;align-content:center;}
+.buttons{gap:14px;margin-top:8px;}
+.opt{min-width:var(--tap-min);min-height:clamp(88px,24vw,135px);font-size:clamp(40px,12vw,70px);border-radius:28px;padding:10px;}
+.opt.wide{min-width:min(44vw,240px);min-height:clamp(112px,31vw,190px);font-size:clamp(20px,5.6vw,32px);}
+.grp{gap:9px;max-width:92vw;align-items:center;}
+.it{font-size:clamp(38px,11.5vw,66px);line-height:1.05;}
+.cell{width:clamp(44px,12.5vw,68px);height:clamp(44px,12.5vw,68px);font-size:clamp(34px,9.5vw,54px);border-radius:13px;}
+.tenframe{gap:6px;padding:8px;border-radius:18px;}
+.seq{gap:10px;}
+.seq .num{min-width:clamp(54px,15vw,82px);height:clamp(58px,16vw,88px);font-size:clamp(30px,9vw,54px);border-radius:18px;}
+.box{gap:8px;padding:10px;border-radius:20px;margin:5px;}
+.part{border-width:4px;border-radius:22px;padding:12px 14px;margin:5px;}
+.rod{width:clamp(18px,4.4vw,28px);height:clamp(62px,15vw,96px);border-radius:6px;}
+.unit{width:clamp(18px,4.4vw,28px);height:clamp(18px,4.4vw,28px);border-radius:6px;}
+.units{grid-template-columns:repeat(2,clamp(18px,4.4vw,28px));gap:4px;}
+.pv{gap:9px;margin:4px 8px;}
+.label{font-size:clamp(15px,4.2vw,22px);}
+.lesson{font-size:clamp(17px,4.8vw,25px);line-height:1.22;padding:10px 12px;margin:5px auto;}
+#skillLine{font-size:clamp(13px,3.6vw,18px);}
+#replay{width:clamp(48px,13vw,64px);height:clamp(48px,13vw,64px);font-size:clamp(24px,7vw,34px);}
+#mascot{left:6px;bottom:6px;max-width:94vw;}
+#lumi{font-size:clamp(44px,13vw,78px);}
+#bubble{max-width:74vw;font-size:clamp(13px,3.8vw,18px);padding:8px 10px;}
+.comparePair,.visualPair,.addPair{display:flex;gap:14px;justify-content:center;align-items:stretch;flex-wrap:wrap;width:100%;}
+.compareCard,.groupCard{background:#fff;border:4px solid var(--lila);border-radius:24px;padding:10px 12px;box-shadow:0 5px 0 var(--sombra);min-width:min(42vw,250px);display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.groupTitle{font-size:clamp(17px,5vw,26px);font-weight:900;color:var(--morado);margin-bottom:8px;}
+.compareCard .grp,.groupCard .grp{max-width:min(76vw,330px);}
+.plus.mobilePlus{align-self:center;display:flex;align-items:center;justify-content:center;min-width:42px;}
+@media (max-width:520px){
+  #hud{gap:5px;padding:6px 8px;}
+  .pill{padding:5px 9px;border-width:2px;font-size:clamp(12px,3.4vw,15px);}
+  .roundBtn{width:40px;height:40px;font-size:20px;border-width:2px;}
+  #barWrap{height:13px;margin:0 10px 2px;}
+  #world{font-size:13px;}
+  #card{min-height:calc(100dvh - 98px);border-width:4px;box-shadow:0 9px 0 var(--sombra),0 17px 30px rgba(70,22,96,.24);}
+  .comparePair{flex-wrap:nowrap;gap:8px;}
+  .opt.wide{min-width:46vw;}
+  .compareCard{min-width:39vw;padding:8px 6px;}
+  .compareCard .it{font-size:clamp(34px,10vw,48px);}
+  .groupTitle{font-size:clamp(15px,4.6vw,20px);margin-bottom:5px;}
+  #mascot{display:none;}
+}
+@media (orientation:landscape) and (max-height:540px){
+  #mascot{display:none;}
+  #card{min-height:auto;}
+  #prompt{font-size:clamp(22px,5vw,34px);}
+  .it{font-size:clamp(32px,7vw,52px);}
+  .cell{width:clamp(36px,8vw,54px);height:clamp(36px,8vw,54px);font-size:clamp(28px,6vw,44px);}
+}
+
 </style>
 </head>
 <body>
@@ -58,7 +116,7 @@ body{background:linear-gradient(160deg,var(--bg1),var(--bg2) 56%,var(--bg3));tra
   <div class="bigUni">🦄</div>
   <h1>Las Matemáticas<br>Mágicas de Lumi</h1>
   <p>Un juego infinito que enseña desde cero: una idea nueva a la vez, mucho repaso, y sin saltarse pasos.</p>
-  <button class="bigBtn" id="playBtn">¡Jugar! ▶</button>
+  <button class="bigBtn" id="playBtn" type="button" onclick="startGame(event)">¡Jugar! ▶</button>
   <button class="smallBtn" id="resetStart">Reiniciar progreso</button>
   <p class="mini">Para mamá y papá: el juego avanza por dominio de habilidades, no por velocidad. Si hay errores, vuelve a ejercicios más concretos.</p>
 </div>
@@ -80,7 +138,8 @@ function numOptions(correct,n,lo,hi){const set=new Set([correct]);let g=0;while(
 function tensOptions(correct){const set=new Set([correct]);let g=0;while(set.size<3&&g++<80){let d=correct+10*rint(-3,3);if(d>=0&&d<=100&&d!==correct)set.add(d)}let k=0;while(set.size<3){if(k!==correct)set.add(k);k+=10}return shuffle([...set]).slice(0,3).map(v=>({text:String(v),correct:v===correct}))}
 function tenframe(n,item){let s='';for(let i=0;i<10;i++)s+='<div class="cell'+(i<n?' full':'')+'">'+(i<n?item:'')+'</div>';return '<div class="tenframe">'+s+'</div>'}
 function multiFrame(n,item){let s='<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">';let left=n;if(left===0)s+=tenframe(0,item);while(left>0){const f=Math.min(10,left);s+=tenframe(f,item);left-=f}return s+'</div>'}
-function groupHTML(n,item){let s='';for(let i=0;i<n;i++)s+='<span class="it">'+item+'</span>';return '<div class="grp">'+s+'</div>'}
+function groupHTML(n,item){let s='';for(let i=0;i<n;i++)s+='<span class="it">'+item+'</span>';return '<div class="grp" aria-label="grupo de '+n+' objetos">'+s+'</div>'}
+function groupCardHTML(n,item,label){return '<div class="compareCard"><div class="groupTitle">'+label+'</div>'+groupHTML(n,item)+'</div>'}
 function seqHTML(arr){return '<div class="seq">'+arr.map(v=>'<div class="num '+(v==='?'?'q':'')+'">'+v+'</div>').join('')+'</div>'}
 function base10HTML(num,label){const t=Math.floor(num/10),o=num%10;let rs='',us='';for(let i=0;i<t;i++)rs+='<div class="rod"></div>';for(let i=0;i<o;i++)us+='<div class="unit"></div>';return '<div class="part"><div class="pv"><div class="rods">'+rs+'</div><div class="units">'+us+'</div></div>'+(label?'<div class="label">'+label+'</div>':'')+'</div>'}
 function looseTenHTML(){let u='';for(let i=0;i<10;i++)u+='<div class="unit"></div>';return '<div class="part"><div class="units" style="grid-template-columns:repeat(5,15px)">'+u+'</div><div class="label">10 unidades</div></div>'}
@@ -89,12 +148,12 @@ function arrayHTML(r,c,item,hi){let s='';for(let i=0;i<r*c;i++){const h=hi!=null
 function barSVG(parts,shaded,w){w=w||210;const h=44,pw=w/parts;let r='';for(let i=0;i<parts;i++){r+='<rect x="'+(i*pw).toFixed(1)+'" y="0" width="'+pw.toFixed(1)+'" height="'+h+'" fill="'+(i<shaded?'#a972ff':'#efe3ff')+'" stroke="#fff" stroke-width="3"/>'}return '<svg viewBox="0 0 '+w+' '+h+'" width="'+Math.min(w,240)+'" height="'+h+'">'+r+'</svg>'}
 const FRAC={2:'un medio',3:'un tercio',4:'un cuarto'};
 function mkCount(max){const n=rint(1,max),it=choice(ITEMS);return{prompt:'¿Cuántas hay?',speak:'¿Cuántas hay? Tócalas una por una para contar.',visual:multiFrame(n,it),options:numOptions(n,3,1,max),retry:'Tócalas una por una. Cada toque es un número.',win:'¡Hay '+n+'!',topic:'Conteo hasta '+max}}
-function mkCompare(max){let a=rint(1,max),b=rint(1,max);while(a===b)b=rint(1,max);const it=choice(ITEMS);return{prompt:'¿Dónde hay MÁS?',speak:'¿Dónde hay más? Mira los dos grupos.',wide:true,options:shuffle([{html:groupHTML(a,it),correct:a>b},{html:groupHTML(b,it),correct:b>a}]),retry:'Mira cuál grupo tiene más cositas.',win:'¡Ese grupo tiene más!',topic:'Comparar cantidades'}}
-function mkEqual(max){let a=rint(1,max),b=Math.random()<.5?a:rint(1,max);const it=choice(ITEMS);return{prompt:'¿Son iguales?',speak:'Mira los dos grupos. ¿Tienen la misma cantidad?',wide:true,visual:'<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">'+groupHTML(a,it)+groupHTML(b,it)+'</div>',options:shuffle([{text:'sí',correct:a===b},{text:'no',correct:a!==b}]),retry:'Cuenta los dos grupos y compara.',win:a===b?'¡Sí, son iguales!':'¡No, son diferentes!',topic:'Igual / diferente'}}
+function mkCompare(max){let a=rint(1,max),b=rint(1,max);while(a===b)b=rint(1,max);const it=choice(ITEMS);return{prompt:'¿Dónde hay MÁS?',speak:'¿Dónde hay más? Mira los dos grupos separados.',wide:true,options:shuffle([{html:groupCardHTML(a,it,'Grupo 1'),correct:a>b},{html:groupCardHTML(b,it,'Grupo 2'),correct:b>a}]),retry:'Mira cada tarjeta. ¿Cuál tiene más cositas?',win:'¡Ese grupo tiene más!',topic:'Comparar cantidades'}}
+function mkEqual(max){let a=rint(1,max),b=Math.random()<.5?a:rint(1,max);const it=choice(ITEMS);return{prompt:'¿Son iguales?',speak:'Mira los dos grupos separados. ¿Tienen la misma cantidad?',wide:true,visual:'<div class="visualPair">'+groupCardHTML(a,it,'Grupo 1')+groupCardHTML(b,it,'Grupo 2')+'</div>',options:shuffle([{text:'sí',correct:a===b},{text:'no',correct:a!==b}]),retry:'Cuenta el Grupo 1 y después el Grupo 2.',win:a===b?'¡Sí, son iguales!':'¡No, son diferentes!',topic:'Igual / diferente'}}
 function mkOrder(max){const start=rint(1,Math.max(1,max-3));const seq=[start,start+1,start+2,start+3];const miss=rint(1,2),ans=seq[miss];return{prompt:'¿Qué número falta?',speak:'Cuenta en orden. ¿Qué número va en el hueco?',visual:seqHTML(seq.map((v,i)=>i===miss?'?':v)),options:numOptions(ans,3,1,max+1),retry:'Di los números en orden y mira el hueco.',win:'¡El '+ans+'!',topic:'Orden numérico'}}
 function mkBeforeAfter(max){const n=rint(2,max-1),askBefore=Math.random()<.5,ans=askBefore?n-1:n+1;return{prompt:(askBefore?'¿Qué va ANTES de ':'¿Qué va DESPUÉS de ')+n+'?',speak:(askBefore?'¿Qué número va antes de ':'¿Qué número va después de ')+n+'?',visual:seqHTML(askBefore?['?',n,n+1]:[n-1,n,'?']),options:numOptions(ans,3,1,max),retry:'Cuenta en orden despacito.',win:'¡Es '+ans+'!',topic:'Antes y después'}}
-function mkAdd(maxSum){let a=rint(1,Math.min(9,maxSum-1)),b=rint(1,maxSum-a);const it=choice(ITEMS);return{prompt:a+' + '+b+' = ?',speak:'Sumar es juntar. Junta los dos grupos y cuenta todo.',visual:'<div style="display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap">'+groupHTML(a,it)+'<span class="plus">+</span>'+groupHTML(b,it)+'</div>',options:numOptions(a+b,3,1,maxSum),retry:'Cuenta el primer grupo y sigue con el segundo.',win:'¡'+a+' más '+b+' son '+(a+b)+'!',topic:'Sumar hasta '+maxSum}}
-function mkSub(max){const a=rint(2,max),b=rint(1,a-1),it=choice(ITEMS);let g='';for(let i=0;i<a;i++)g+='<span class="it '+(i>=a-b?'gone':'')+'">'+it+'</span>';return{prompt:a+' − '+b+' = ?',speak:'Restar es quitar. Cuenta solo los que quedan.',visual:'<div class="grp">'+g+'</div>',options:numOptions(a-b,3,0,max),retry:'No cuentes los tachados. Cuenta los que quedan.',win:(a-b===1?'¡Queda 1!':'¡Quedan '+(a-b)+'!'),topic:'Restar hasta '+max}}
+function mkAdd(maxSum){let a=rint(1,Math.min(9,maxSum-1)),b=rint(1,maxSum-a);const it=choice(ITEMS);return{prompt:a+' + '+b+' = ?',speak:'Sumar es juntar. Junta los dos grupos y cuenta todo.',visual:'<div class="addPair">'+groupCardHTML(a,it,'Primer grupo')+'<span class="plus mobilePlus">+</span>'+groupCardHTML(b,it,'Segundo grupo')+'</div>',options:numOptions(a+b,3,1,maxSum),retry:'Cuenta el primer grupo y sigue con el segundo.',win:'¡'+a+' más '+b+' son '+(a+b)+'!',topic:'Sumar hasta '+maxSum}}
+function mkSub(max){const a=rint(2,max),b=rint(1,a-1),it=choice(ITEMS);let g='';for(let i=0;i<a;i++)g+='<span class="it '+(i>=a-b?'gone':'')+'">'+it+'</span>';return{prompt:a+' − '+b+' = ?',speak:'Restar es quitar. Cuenta solo los que quedan.',visual:'<div class="groupCard"><div class="groupTitle">Quedan sin tachar</div><div class="grp">'+g+'</div></div>',options:numOptions(a-b,3,0,max),retry:'No cuentes los tachados. Cuenta los que quedan.',win:(a-b===1?'¡Queda 1!':'¡Quedan '+(a-b)+'!'),topic:'Restar hasta '+max}}
 function mkMakeTen(){const a=rint(1,9),ans=10-a;return{prompt:'¿Cuánto falta para 10?',speak:'Mira el marco de diez. Cuenta los espacios vacíos.',visual:tenframe(a,'⭐'),options:numOptions(ans,3,0,10),retry:'Cuenta los espacios vacíos para llegar a diez.',win:(ans===1?'¡Falta 1!':'¡Faltan '+ans+'!'),topic:'Formar 10'}}
 function mkSkip(step,max){const start=step*rint(1,Math.max(1,Math.floor(max/step)-3));const seq=[start,start+step,start+step*2,start+step*3];return{prompt:'¿Qué número sigue?',speak:'Saltamos de '+step+' en '+step+'. ¿Qué número sigue?',visual:seqHTML([seq[0],seq[1],seq[2],'?']),options:numOptions(seq[3],3,1,max),retry:'Suma '+step+' más al último número.',win:'¡Sigue el '+seq[3]+'!',topic:'Contar de '+step+' en '+step}}
 function mkTensConcept(){if(Math.random()<.5){return{lesson:'Diez unidades juntas forman una decena.',prompt:'1 decena tiene...',speak:'Una decena es un grupo de diez unidades. ¿Cuántas unidades tiene?',visual:'<div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap">'+base10HTML(10,'1 decena')+'<span class="plus">=</span>'+looseTenHTML()+'</div>',options:shuffle([{text:'10',correct:true},{text:'1',correct:false},{text:'5',correct:false}]),retry:'Cuenta las unidades: son diez.',win:'¡Sí! 1 decena son 10 unidades.',topic:'Qué es una decena'}}const d=rint(1,4);return{lesson:'Cada barra verde es una decena.',prompt:'¿Cuántas decenas ves?',speak:'Cuenta las barras verdes. Cada barra es una decena.',visual:base10HTML(d*10),options:numOptions(d,3,1,6),retry:'Cuenta solo las barras verdes.',win:'¡'+d+(d===1?' decena!':' decenas!'),topic:'Qué es una decena'}}
@@ -164,13 +223,15 @@ function speak(t){if(muted||!('speechSynthesis'in window))return;try{speechSynth
 function say(t){$('bubble').textContent=t;speak(t)}
 function updateHUD(){state.level=1+Math.floor(state.totalCorrect/7);$('levelN').textContent=state.level;$('starN').textContent=state.stars;$('gemN').textContent=state.gems;$('bar').style.width=((state.stars%10)*10)+'%';if(state.streak>=2){$('streakPill').style.display='flex';$('streakN').textContent=state.streak}else $('streakPill').style.display='none';const w=WORLDS[Math.floor((state.level-1)/3)%WORLDS.length];$('world').textContent=w[0];document.documentElement.style.setProperty('--bg1',w[1]);document.documentElement.style.setProperty('--bg2',w[2]);document.documentElement.style.setProperty('--bg3',w[3])}
 function parentInfo(){const av=available().map(s=>s.name).join(', ');const last=state.introduced[state.introduced.length-1]||'count3';const cur=MAP[last]?MAP[last].name:'Inicio';$('parentText').innerHTML='Concepto actual aproximado: <b>'+cur+'</b>.<br>Habilidades disponibles: '+av+'.<br><br>Regla: una habilidad nueva aparece solo cuando sus prerrequisitos tienen al menos '+MASTER+' aciertos. Si hay errores repetidos, Lumi vuelve temporalmente a ejercicios más concretos.'}
-function newProblem(){busy=false;tries=0;const ch=chooseSkill();if(ch.intro&&!state.introduced.includes(ch.skill.id))state.introduced.push(ch.skill.id);state.recent=ch.skill.id;current=ch.skill.make();current.skill=ch.skill.id;current.intro=ch.intro;current.skillName=ch.skill.name;$('badge').style.display=ch.intro?'block':'none';$('skillLine').textContent=current.topic||ch.skill.name;$('lesson').style.display=(ch.intro||current.lesson)?'block':'none';$('lesson').textContent=(ch.intro?ch.skill.intro+' ':'')+(current.lesson||'');$('prompt').textContent=current.prompt;$('visual').innerHTML=current.visual||'';$('options').innerHTML='';current.options.forEach(o=>{const b=document.createElement('div');b.className='opt'+(current.wide||o.wide||o.html?' wide':'');if(o.html)b.innerHTML=o.html;else b.textContent=o.text;b.addEventListener('click',()=>pickAnswer(b,o));$('options').appendChild(b)});let c=0;$('visual').querySelectorAll('.it:not(.gone),.cell.full').forEach(el=>{el.style.cursor='pointer';el.addEventListener('click',ev=>{ev.stopPropagation();if(el.dataset.c)return;el.dataset.c='1';c++;el.classList.add('counted');countSound(c);speak(String(c))})});say((ch.intro?ch.skill.intro+' ':'')+current.speak);parentInfo();save()}
+function newProblem(){busy=false;tries=0;const ch=chooseSkill();if(ch.intro&&!state.introduced.includes(ch.skill.id))state.introduced.push(ch.skill.id);state.recent=ch.skill.id;current=ch.skill.make();current.skill=ch.skill.id;current.intro=ch.intro;current.skillName=ch.skill.name;$('badge').style.display=ch.intro?'block':'none';$('skillLine').textContent=current.topic||ch.skill.name;$('lesson').style.display=(ch.intro&&current.lesson)||current.lesson?'block':'none';$('lesson').textContent=(ch.intro?ch.skill.intro+' ':'')+(current.lesson||'');$('prompt').textContent=current.prompt;$('visual').innerHTML=current.visual||'';$('options').innerHTML='';current.options.forEach(o=>{const b=document.createElement('div');b.className='opt'+(current.wide||o.wide||o.html?' wide':'');if(o.html)b.innerHTML=o.html;else b.textContent=o.text;b.addEventListener('click',()=>pickAnswer(b,o));$('options').appendChild(b)});let c=0;$('visual').querySelectorAll('.it:not(.gone),.cell.full').forEach(el=>{el.style.cursor='pointer';el.addEventListener('click',ev=>{ev.stopPropagation();if(el.dataset.c)return;el.dataset.c='1';c++;el.classList.add('counted');countSound(c);speak(String(c))})});say((ch.intro?ch.skill.intro+' ':'')+current.speak);parentInfo();save()}
 function pickAnswer(btn,o){if(busy)return;if(o.correct){busy=true;btn.classList.add('correctPick');okSound();state.streak++;state.stars+=state.streak>=3?2:1;state.totalCorrect++;state.mastery[current.skill]=(state.mastery[current.skill]||0)+1;state.errors[current.skill]=0;const oldG=state.gems;state.gems=Math.floor(state.stars/10);const oldLevel=state.level;updateHUD();$('lumi').classList.remove('happy');void $('lumi').offsetWidth;$('lumi').classList.add('happy');confetti(state.streak>=3?20:11);say(choice(['¡Muy bien!','¡Excelente!','¡Lo lograste!','¡Brillante!'])+' '+current.win);let banners=[];if(state.gems>oldG){gemSound();banners.push(['💎 ¡Gema nueva!','Llevas '+state.gems+' gemas'])}if(state.level>oldLevel){lvlSound();banners.push(['🏆 ¡Nivel '+state.level+'!','Seguimos paso a paso'])}save();setTimeout(()=>showBanners(banners,newProblem),1050)}else{state.streak=0;state.totalWrong++;state.errors[current.skill]=(state.errors[current.skill]||0)+1;tries++;updateHUD();save();btn.classList.add('wrong');setTimeout(()=>btn.classList.remove('wrong'),400);noSound();if(tries>=2){[...$('options').children].forEach((c,i)=>{if(current.options[i].correct)c.classList.add('hint')});say('Mira, prueba con este. Después repetiremos más fácil.')}else say(current.retry)}}
 function showBanners(list,done){if(!list.length){done&&done();return}const b=list[0];$('bigMsg').textContent=b[0];$('bigSub').textContent=b[1]||'';$('big').style.display='flex';setTimeout(()=>{$('big').style.display='none';setTimeout(()=>showBanners(list.slice(1),done),180)},1400)}
 function confetti(n){const em=['✨','🎉','💖','⭐','🌸','🦋','🌟','💎','🦄'];for(let i=0;i<n;i++){const c=document.createElement('div');c.className='conf';c.textContent=choice(em);c.style.left=Math.random()*100+'vw';c.style.fontSize=(22+Math.random()*25)+'px';const d=1.4+Math.random()*1.5;c.style.animationDuration=d+'s';c.style.animationDelay=(Math.random()*.25)+'s';$('confetti').appendChild(c);setTimeout(()=>c.remove(),(d+1)*1000)}}
 function buildSparkles(){for(let i=0;i<15;i++){const s=document.createElement('div');s.className='sp';s.textContent=choice(['✨','⭐','💫','🌟']);s.style.left=Math.random()*100+'vw';s.style.top=Math.random()*100+'vh';s.style.animationDelay=Math.random()*4+'s';s.style.fontSize=(14+Math.random()*21)+'px';$('sparkles').appendChild(s)}}
-function reset(){localStorage.removeItem(SAVE_KEY);state={level:1,stars:0,gems:0,streak:0,totalCorrect:0,totalWrong:0,mastery:{},errors:{},introduced:[],recent:null};updateHUD();parentInfo()}
-$('playBtn').addEventListener('click',()=>{initAudio();if(actx&&actx.state==='suspended')actx.resume();$('start').style.display='none';startMusic();updateHUD();newProblem()});$('replay').addEventListener('click',()=>{if(current)speak(current.speak)});$('muteBtn').addEventListener('click',()=>{muted=!muted;$('muteBtn').textContent=muted?'🔇':'🔊';if(muted&&'speechSynthesis'in window)speechSynthesis.cancel()});$('parentBtn').addEventListener('click',()=>{$('parentPanel').style.display='block';parentInfo()});$('closeParent').addEventListener('click',()=>{$('parentPanel').style.display='none'});$('resetBtn').addEventListener('click',()=>{reset();$('parentPanel').style.display='none';$('start').style.display='flex'});$('resetStart').addEventListener('click',reset);
+function reset(){try{localStorage.removeItem(SAVE_KEY)}catch(e){}state={level:1,stars:0,gems:0,streak:0,totalCorrect:0,totalWrong:0,mastery:{},errors:{},introduced:[],recent:null};updateHUD();parentInfo()}
+function startGame(ev){if(ev&&ev.preventDefault)ev.preventDefault();initAudio();try{if(actx&&actx.state==='suspended')actx.resume()}catch(e){}$('start').style.display='none';startMusic();updateHUD();newProblem()}
+function bindTap(id,fn){const el=$(id);if(!el)return;el.addEventListener('click',fn);el.addEventListener('touchend',function(ev){ev.preventDefault();fn(ev)},{passive:false});}
+bindTap('playBtn',startGame);bindTap('replay',()=>{if(current)speak(current.speak)});$('muteBtn').addEventListener('click',()=>{muted=!muted;$('muteBtn').textContent=muted?'🔇':'🔊';if(muted&&'speechSynthesis'in window)speechSynthesis.cancel()});$('parentBtn').addEventListener('click',()=>{$('parentPanel').style.display='block';parentInfo()});$('closeParent').addEventListener('click',()=>{$('parentPanel').style.display='none'});$('resetBtn').addEventListener('click',()=>{reset();$('parentPanel').style.display='none';$('start').style.display='flex'});$('resetStart').addEventListener('click',reset);
 buildSparkles();load();updateHUD();parentInfo();
 </script>
 </body>
