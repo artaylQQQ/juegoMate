@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Las Matemáticas Mágicas de Lumi - Móvil y Tablet</title>
+<title>Las Matemáticas Mágicas de Lumi - Móvil y Tablet v06</title>
 <style>
 :root{
   --rosa:#ff7eb6;--rosa2:#ff4d9d;--morado:#7b3fa6;--lila:#cdb4ff;--menta:#9ef0c9;
@@ -82,6 +82,97 @@ button,.roundBtn,.opt,#replay{touch-action:manipulation;-webkit-touch-callout:no
   .cell{width:clamp(36px,8vw,54px);height:clamp(36px,8vw,54px);font-size:clamp(28px,6vw,44px);}
 }
 
+
+
+/* ===== Ajustes v06: móvil/tablet real, botones compactos y opciones con iconos ===== */
+#card{
+  height:calc(100svh - 122px);
+  min-height:auto;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+#visual{
+  flex:1 1 auto;
+  min-height:0;
+  overflow:visible;
+}
+.buttons{
+  flex:0 0 auto;
+}
+.opt .answerIcon{
+  display:block;
+  font-size:clamp(38px,10vw,66px);
+  line-height:1;
+  margin-bottom:4px;
+}
+.opt .answerText{
+  display:block;
+  font-size:clamp(22px,6vw,34px);
+  line-height:1;
+}
+.buttons.boolButtons{
+  flex-wrap:nowrap;
+  align-items:stretch;
+  justify-content:center;
+  gap:12px;
+}
+.opt.boolOpt{
+  width:min(42vw,210px);
+  min-width:0;
+  min-height:clamp(82px,20vw,125px);
+  padding:8px 10px;
+  font-size:clamp(22px,6vw,34px);
+  border-width:5px;
+}
+.opt.boolYes{background:#f0fff4;border-color:#ffffff;}
+.opt.boolNo{background:#fff2f6;border-color:#ffffff;}
+body.compactQuestion #prompt{font-size:clamp(22px,6.2vw,34px);margin:2px 2px 4px;}
+body.compactQuestion #visual{margin:4px 0 4px;gap:8px;}
+body.compactQuestion .lesson{font-size:clamp(14px,3.8vw,19px);padding:7px 9px;margin:2px auto;}
+body.compactQuestion #skillLine{font-size:clamp(11px,3vw,14px);}
+body.compactQuestion #replay{width:clamp(42px,11vw,56px);height:clamp(42px,11vw,56px);font-size:clamp(22px,6vw,30px);margin:2px auto;}
+body.compactQuestion .compareCard,
+body.compactQuestion .groupCard{padding:7px 8px;border-radius:20px;}
+body.compactQuestion .groupTitle{font-size:clamp(15px,4.5vw,22px);margin-bottom:4px;}
+body.compactQuestion .compareCard .it,
+body.compactQuestion .groupCard .it{font-size:clamp(34px,9.6vw,56px);}
+body.compactQuestion .visualPair{gap:10px;}
+.parentDanger{background:#fff4f8;color:#9c2a5a;}
+.parentAdvance{background:#eefcff;color:#116c85;}
+@media (max-width:520px){
+  #stage{padding:4px 5px max(8px,env(safe-area-inset-bottom));gap:4px;}
+  #card{height:calc(100svh - 105px);width:99vw;padding:9px 7px 10px;border-radius:26px;}
+  #prompt{font-size:clamp(23px,7vw,36px);margin:3px 2px 4px;}
+  #visual{margin:5px 0 5px;gap:8px;}
+  .buttons{gap:10px;margin-top:4px;}
+  .opt{min-height:clamp(74px,20vw,110px);}
+  .opt.wide{min-height:clamp(82px,22vw,125px);}
+  .buttons.boolButtons{gap:8px;}
+  .opt.boolOpt{width:43vw;min-height:clamp(78px,19vw,112px);border-radius:24px;}
+  .opt .answerIcon{font-size:clamp(36px,9.5vw,56px);}
+  .opt .answerText{font-size:clamp(20px,5.7vw,30px);}
+  .visualPair{flex-direction:column;align-items:center;gap:8px;}
+  .visualPair .groupCard{width:min(82vw,360px);min-width:0;}
+  .visualPair .groupCard .grp{max-width:78vw;}
+  .comparePair{flex-direction:row;flex-wrap:nowrap;gap:7px;}
+  .compareCard{min-width:0;width:calc(50% - 5px);padding:7px 5px;}
+  .compareCard .grp{max-width:100%;gap:5px;}
+  .compareCard .it{font-size:clamp(30px,9vw,46px);}
+}
+@media (max-height:760px) and (orientation:portrait){
+  #card{height:calc(100svh - 103px);}
+  #skillLine{font-size:clamp(11px,2.9vw,13px);}
+  #prompt{font-size:clamp(22px,6.5vw,34px);line-height:1.02;}
+  .lesson{font-size:clamp(14px,3.7vw,18px);padding:6px 8px;margin:2px auto;}
+  #visual{margin:3px 0;}
+  .groupTitle{font-size:clamp(14px,4.2vw,20px);}
+  .it{font-size:clamp(32px,9.5vw,54px);}
+  .opt{min-height:clamp(72px,18vw,100px);}
+  .opt.boolOpt{min-height:clamp(70px,17vw,98px);}
+  #replay{width:42px;height:42px;font-size:22px;margin:1px auto;}
+}
+
 </style>
 </head>
 <body>
@@ -123,7 +214,7 @@ button,.roundBtn,.opt,#replay{touch-action:manipulation;-webkit-touch-callout:no
 <div id="parentPanel">
   <b>Para adultos</b>
   <div class="mini" id="parentText"></div>
-  <div class="row"><button class="smallBtn" id="resetBtn">Reiniciar</button><button class="smallBtn" id="closeParent">Cerrar</button></div>
+  <div class="row"><button class="smallBtn parentAdvance" id="advanceBtn">Avanzar nivel ⏭️</button><button class="smallBtn parentDanger" id="resetBtn">Reiniciar</button><button class="smallBtn" id="closeParent">Cerrar</button></div>
 </div>
 <script>
 'use strict';
@@ -149,7 +240,7 @@ function barSVG(parts,shaded,w){w=w||210;const h=44,pw=w/parts;let r='';for(let 
 const FRAC={2:'un medio',3:'un tercio',4:'un cuarto'};
 function mkCount(max){const n=rint(1,max),it=choice(ITEMS);return{prompt:'¿Cuántas hay?',speak:'¿Cuántas hay? Tócalas una por una para contar.',visual:multiFrame(n,it),options:numOptions(n,3,1,max),retry:'Tócalas una por una. Cada toque es un número.',win:'¡Hay '+n+'!',topic:'Conteo hasta '+max}}
 function mkCompare(max){let a=rint(1,max),b=rint(1,max);while(a===b)b=rint(1,max);const it=choice(ITEMS);return{prompt:'¿Dónde hay MÁS?',speak:'¿Dónde hay más? Mira los dos grupos separados.',wide:true,options:shuffle([{html:groupCardHTML(a,it,'Grupo 1'),correct:a>b},{html:groupCardHTML(b,it,'Grupo 2'),correct:b>a}]),retry:'Mira cada tarjeta. ¿Cuál tiene más cositas?',win:'¡Ese grupo tiene más!',topic:'Comparar cantidades'}}
-function mkEqual(max){let a=rint(1,max),b=Math.random()<.5?a:rint(1,max);const it=choice(ITEMS);return{prompt:'¿Son iguales?',speak:'Mira los dos grupos separados. ¿Tienen la misma cantidad?',wide:true,visual:'<div class="visualPair">'+groupCardHTML(a,it,'Grupo 1')+groupCardHTML(b,it,'Grupo 2')+'</div>',options:shuffle([{text:'sí',correct:a===b},{text:'no',correct:a!==b}]),retry:'Cuenta el Grupo 1 y después el Grupo 2.',win:a===b?'¡Sí, son iguales!':'¡No, son diferentes!',topic:'Igual / diferente'}}
+function mkEqual(max){let a=rint(1,max),b=Math.random()<.5?a:rint(1,max);const it=choice(ITEMS);return{prompt:'¿Son iguales?',speak:'Mira los dos grupos separados. ¿Tienen la misma cantidad?',wide:true,visual:'<div class="visualPair">'+groupCardHTML(a,it,'Grupo 1')+groupCardHTML(b,it,'Grupo 2')+'</div>',options:shuffle([{text:'sí',icon:'✅',kind:'yes',correct:a===b},{text:'no',icon:'❌',kind:'no',correct:a!==b}]),retry:'Cuenta el Grupo 1 y después el Grupo 2.',win:a===b?'¡Sí, son iguales!':'¡No, son diferentes!',topic:'Igual / diferente'}}
 function mkOrder(max){const start=rint(1,Math.max(1,max-3));const seq=[start,start+1,start+2,start+3];const miss=rint(1,2),ans=seq[miss];return{prompt:'¿Qué número falta?',speak:'Cuenta en orden. ¿Qué número va en el hueco?',visual:seqHTML(seq.map((v,i)=>i===miss?'?':v)),options:numOptions(ans,3,1,max+1),retry:'Di los números en orden y mira el hueco.',win:'¡El '+ans+'!',topic:'Orden numérico'}}
 function mkBeforeAfter(max){const n=rint(2,max-1),askBefore=Math.random()<.5,ans=askBefore?n-1:n+1;return{prompt:(askBefore?'¿Qué va ANTES de ':'¿Qué va DESPUÉS de ')+n+'?',speak:(askBefore?'¿Qué número va antes de ':'¿Qué número va después de ')+n+'?',visual:seqHTML(askBefore?['?',n,n+1]:[n-1,n,'?']),options:numOptions(ans,3,1,max),retry:'Cuenta en orden despacito.',win:'¡Es '+ans+'!',topic:'Antes y después'}}
 function mkAdd(maxSum){let a=rint(1,Math.min(9,maxSum-1)),b=rint(1,maxSum-a);const it=choice(ITEMS);return{prompt:a+' + '+b+' = ?',speak:'Sumar es juntar. Junta los dos grupos y cuenta todo.',visual:'<div class="addPair">'+groupCardHTML(a,it,'Primer grupo')+'<span class="plus mobilePlus">+</span>'+groupCardHTML(b,it,'Segundo grupo')+'</div>',options:numOptions(a+b,3,1,maxSum),retry:'Cuenta el primer grupo y sigue con el segundo.',win:'¡'+a+' más '+b+' son '+(a+b)+'!',topic:'Sumar hasta '+maxSum}}
@@ -223,15 +314,75 @@ function speak(t){if(muted||!('speechSynthesis'in window))return;try{speechSynth
 function say(t){$('bubble').textContent=t;speak(t)}
 function updateHUD(){state.level=1+Math.floor(state.totalCorrect/7);$('levelN').textContent=state.level;$('starN').textContent=state.stars;$('gemN').textContent=state.gems;$('bar').style.width=((state.stars%10)*10)+'%';if(state.streak>=2){$('streakPill').style.display='flex';$('streakN').textContent=state.streak}else $('streakPill').style.display='none';const w=WORLDS[Math.floor((state.level-1)/3)%WORLDS.length];$('world').textContent=w[0];document.documentElement.style.setProperty('--bg1',w[1]);document.documentElement.style.setProperty('--bg2',w[2]);document.documentElement.style.setProperty('--bg3',w[3])}
 function parentInfo(){const av=available().map(s=>s.name).join(', ');const last=state.introduced[state.introduced.length-1]||'count3';const cur=MAP[last]?MAP[last].name:'Inicio';$('parentText').innerHTML='Concepto actual aproximado: <b>'+cur+'</b>.<br>Habilidades disponibles: '+av+'.<br><br>Regla: una habilidad nueva aparece solo cuando sus prerrequisitos tienen al menos '+MASTER+' aciertos. Si hay errores repetidos, Lumi vuelve temporalmente a ejercicios más concretos.'}
-function newProblem(){busy=false;tries=0;const ch=chooseSkill();if(ch.intro&&!state.introduced.includes(ch.skill.id))state.introduced.push(ch.skill.id);state.recent=ch.skill.id;current=ch.skill.make();current.skill=ch.skill.id;current.intro=ch.intro;current.skillName=ch.skill.name;$('badge').style.display=ch.intro?'block':'none';$('skillLine').textContent=current.topic||ch.skill.name;$('lesson').style.display=(ch.intro&&current.lesson)||current.lesson?'block':'none';$('lesson').textContent=(ch.intro?ch.skill.intro+' ':'')+(current.lesson||'');$('prompt').textContent=current.prompt;$('visual').innerHTML=current.visual||'';$('options').innerHTML='';current.options.forEach(o=>{const b=document.createElement('div');b.className='opt'+(current.wide||o.wide||o.html?' wide':'');if(o.html)b.innerHTML=o.html;else b.textContent=o.text;b.addEventListener('click',()=>pickAnswer(b,o));$('options').appendChild(b)});let c=0;$('visual').querySelectorAll('.it:not(.gone),.cell.full').forEach(el=>{el.style.cursor='pointer';el.addEventListener('click',ev=>{ev.stopPropagation();if(el.dataset.c)return;el.dataset.c='1';c++;el.classList.add('counted');countSound(c);speak(String(c))})});say((ch.intro?ch.skill.intro+' ':'')+current.speak);parentInfo();save()}
+function isBoolOptions(opts){return opts&&opts.length===2&&opts.every(o=>o&&(o.kind==='yes'||o.kind==='no'||o.text==='sí'||o.text==='no'))}
+function optionHTML(o){
+  if(o.html)return o.html;
+  if(o.icon)return '<span class="answerIcon">'+o.icon+'</span><span class="answerText">'+o.text+'</span>';
+  return o.text;
+}
+function newProblem(){
+  busy=false;tries=0;
+  const ch=chooseSkill();
+  if(ch.intro&&!state.introduced.includes(ch.skill.id))state.introduced.push(ch.skill.id);
+  state.recent=ch.skill.id;
+  current=ch.skill.make();
+  current.skill=ch.skill.id;current.intro=ch.intro;current.skillName=ch.skill.name;
+  const boolOpts=isBoolOptions(current.options);
+  document.body.classList.toggle('compactQuestion', !!boolOpts);
+  $('badge').style.display=ch.intro?'block':'none';
+  $('skillLine').textContent=current.topic||ch.skill.name;
+  $('lesson').style.display=(ch.intro&&current.lesson)||current.lesson?'block':'none';
+  $('lesson').textContent=(ch.intro?ch.skill.intro+' ':'')+(current.lesson||'');
+  $('prompt').textContent=current.prompt;
+  $('visual').innerHTML=current.visual||'';
+  $('options').innerHTML='';
+  $('options').className='buttons'+(boolOpts?' boolButtons':'');
+  current.options.forEach(o=>{
+    const b=document.createElement('div');
+    b.className='opt'+((current.wide||o.wide||o.html)?' wide':'')+(boolOpts?' boolOpt':'')+(o.kind==='yes'?' boolYes':'')+(o.kind==='no'?' boolNo':'');
+    b.innerHTML=optionHTML(o);
+    b.addEventListener('click',()=>pickAnswer(b,o));
+    $('options').appendChild(b)
+  });
+  let c=0;
+  $('visual').querySelectorAll('.it:not(.gone),.cell.full').forEach(el=>{
+    el.style.cursor='pointer';
+    el.addEventListener('click',ev=>{ev.stopPropagation();if(el.dataset.c)return;el.dataset.c='1';c++;el.classList.add('counted');countSound(c);speak(String(c))})
+  });
+  say((ch.intro?ch.skill.intro+' ':'')+current.speak);
+  parentInfo();
+  save()
+}
 function pickAnswer(btn,o){if(busy)return;if(o.correct){busy=true;btn.classList.add('correctPick');okSound();state.streak++;state.stars+=state.streak>=3?2:1;state.totalCorrect++;state.mastery[current.skill]=(state.mastery[current.skill]||0)+1;state.errors[current.skill]=0;const oldG=state.gems;state.gems=Math.floor(state.stars/10);const oldLevel=state.level;updateHUD();$('lumi').classList.remove('happy');void $('lumi').offsetWidth;$('lumi').classList.add('happy');confetti(state.streak>=3?20:11);say(choice(['¡Muy bien!','¡Excelente!','¡Lo lograste!','¡Brillante!'])+' '+current.win);let banners=[];if(state.gems>oldG){gemSound();banners.push(['💎 ¡Gema nueva!','Llevas '+state.gems+' gemas'])}if(state.level>oldLevel){lvlSound();banners.push(['🏆 ¡Nivel '+state.level+'!','Seguimos paso a paso'])}save();setTimeout(()=>showBanners(banners,newProblem),1050)}else{state.streak=0;state.totalWrong++;state.errors[current.skill]=(state.errors[current.skill]||0)+1;tries++;updateHUD();save();btn.classList.add('wrong');setTimeout(()=>btn.classList.remove('wrong'),400);noSound();if(tries>=2){[...$('options').children].forEach((c,i)=>{if(current.options[i].correct)c.classList.add('hint')});say('Mira, prueba con este. Después repetiremos más fácil.')}else say(current.retry)}}
 function showBanners(list,done){if(!list.length){done&&done();return}const b=list[0];$('bigMsg').textContent=b[0];$('bigSub').textContent=b[1]||'';$('big').style.display='flex';setTimeout(()=>{$('big').style.display='none';setTimeout(()=>showBanners(list.slice(1),done),180)},1400)}
 function confetti(n){const em=['✨','🎉','💖','⭐','🌸','🦋','🌟','💎','🦄'];for(let i=0;i<n;i++){const c=document.createElement('div');c.className='conf';c.textContent=choice(em);c.style.left=Math.random()*100+'vw';c.style.fontSize=(22+Math.random()*25)+'px';const d=1.4+Math.random()*1.5;c.style.animationDuration=d+'s';c.style.animationDelay=(Math.random()*.25)+'s';$('confetti').appendChild(c);setTimeout(()=>c.remove(),(d+1)*1000)}}
 function buildSparkles(){for(let i=0;i<15;i++){const s=document.createElement('div');s.className='sp';s.textContent=choice(['✨','⭐','💫','🌟']);s.style.left=Math.random()*100+'vw';s.style.top=Math.random()*100+'vh';s.style.animationDelay=Math.random()*4+'s';s.style.fontSize=(14+Math.random()*21)+'px';$('sparkles').appendChild(s)}}
+function currentFrontierSkill(){
+  const av=available();
+  const intr=av.filter(s=>state.introduced.includes(s.id));
+  return [...intr].reverse().find(s=>(state.mastery[s.id]||0)<MASTER)||intr[intr.length-1]||av[0]||SKILLS[0];
+}
+function advanceLevel(){
+  const sk=currentFrontierSkill();
+  if(sk){
+    state.mastery[sk.id]=Math.max(state.mastery[sk.id]||0, MASTER);
+    state.errors[sk.id]=0;
+    if(!state.introduced.includes(sk.id))state.introduced.push(sk.id);
+  }
+  state.totalCorrect+=7;
+  state.stars+=5;
+  state.gems=Math.floor(state.stars/10);
+  updateHUD();
+  parentInfo();
+  save();
+  if($('start').style.display==='none'){
+    showBanners([['⏭️ Nivel avanzado','Se desbloqueó o reforzó la siguiente habilidad']],newProblem);
+  }
+}
 function reset(){try{localStorage.removeItem(SAVE_KEY)}catch(e){}state={level:1,stars:0,gems:0,streak:0,totalCorrect:0,totalWrong:0,mastery:{},errors:{},introduced:[],recent:null};updateHUD();parentInfo()}
 function startGame(ev){if(ev&&ev.preventDefault)ev.preventDefault();initAudio();try{if(actx&&actx.state==='suspended')actx.resume()}catch(e){}$('start').style.display='none';startMusic();updateHUD();newProblem()}
 function bindTap(id,fn){const el=$(id);if(!el)return;el.addEventListener('click',fn);el.addEventListener('touchend',function(ev){ev.preventDefault();fn(ev)},{passive:false});}
-bindTap('playBtn',startGame);bindTap('replay',()=>{if(current)speak(current.speak)});$('muteBtn').addEventListener('click',()=>{muted=!muted;$('muteBtn').textContent=muted?'🔇':'🔊';if(muted&&'speechSynthesis'in window)speechSynthesis.cancel()});$('parentBtn').addEventListener('click',()=>{$('parentPanel').style.display='block';parentInfo()});$('closeParent').addEventListener('click',()=>{$('parentPanel').style.display='none'});$('resetBtn').addEventListener('click',()=>{reset();$('parentPanel').style.display='none';$('start').style.display='flex'});$('resetStart').addEventListener('click',reset);
+bindTap('playBtn',startGame);bindTap('replay',()=>{if(current)speak(current.speak)});$('muteBtn').addEventListener('click',()=>{muted=!muted;$('muteBtn').textContent=muted?'🔇':'🔊';if(muted&&'speechSynthesis'in window)speechSynthesis.cancel()});$('parentBtn').addEventListener('click',()=>{$('parentPanel').style.display='block';parentInfo()});$('closeParent').addEventListener('click',()=>{$('parentPanel').style.display='none'});$('advanceBtn').addEventListener('click',advanceLevel);$('resetBtn').addEventListener('click',()=>{reset();$('parentPanel').style.display='none';$('start').style.display='flex'});$('resetStart').addEventListener('click',reset);
 buildSparkles();load();updateHUD();parentInfo();
 </script>
 </body>
