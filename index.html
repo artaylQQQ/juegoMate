@@ -173,6 +173,80 @@ body.compactQuestion .visualPair{gap:10px;}
   #replay{width:42px;height:42px;font-size:22px;margin:1px auto;}
 }
 
+
+
+/* ===== Ajustes v07: revisión final para móvil/tablet ===== */
+#card{
+  overflow-x:hidden;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+  scrollbar-width:none;
+}
+#card::-webkit-scrollbar,#visual::-webkit-scrollbar{display:none;}
+#visual{
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+}
+.equalBoxes{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+}
+.arrayBox .it{font-size:clamp(20px,5.4vw,34px);}
+.groupBox .it{font-size:clamp(24px,6.2vw,38px);}
+.compareCard.mediumItems .it{font-size:clamp(26px,7vw,42px);}
+.compareCard.manyItems .it{font-size:clamp(22px,5.8vw,36px);}
+.compareCard .tenframe{transform-origin:center;}
+.compareCard.manyItems .tenframe{transform:scale(.86);margin:-4px;}
+body.compactQuestion .buttons.boolButtons{position:relative;z-index:2;}
+
+@media (max-width:520px){
+  #card{overflow-y:auto;}
+  #visual{overflow:auto;}
+  .arrayBox .it{font-size:clamp(18px,4.8vw,30px);}
+  .groupBox .it{font-size:clamp(22px,5.8vw,34px);}
+  .compareCard.mediumItems .it{font-size:clamp(25px,7vw,38px);}
+  .compareCard.manyItems .it{font-size:clamp(20px,5.6vw,32px);}
+}
+
+@media (orientation:landscape) and (max-height:540px){
+  #hud{padding:4px 6px;gap:4px;}
+  .pill{padding:3px 8px;border-width:2px;font-size:12px;box-shadow:0 3px 0 var(--sombra);}
+  .roundBtn{width:34px;height:34px;font-size:18px;border-width:2px;box-shadow:0 3px 0 var(--sombra);}
+  #barWrap{height:10px;margin:0 10px 1px;}
+  #world{display:none;}
+  #stage{padding:2px 5px 6px;gap:2px;justify-content:flex-start;}
+  #card{height:calc(100svh - 58px);width:98vw;padding:6px 10px 8px;border-width:4px;border-radius:22px;overflow-y:auto;}
+  #skillLine{display:none;}
+  .lesson{font-size:13px;padding:4px 7px;margin:2px auto;}
+  #prompt{font-size:clamp(18px,4vw,28px);margin:1px 2px 2px;}
+  #visual{margin:2px 0;gap:5px;max-height:34svh;}
+  #replay{width:34px;height:34px;font-size:18px;margin:1px auto;box-shadow:0 3px 0 var(--lila);}
+  .buttons{gap:8px;margin-top:3px;}
+  .opt{min-height:54px;min-width:90px;font-size:clamp(24px,5vw,34px);border-width:3px;border-radius:18px;padding:5px;box-shadow:0 4px 0 var(--sombra);}
+  .opt.wide{min-width:120px;min-height:60px;font-size:clamp(15px,3.4vw,21px);}
+  .opt.boolOpt{width:min(34vw,170px);min-height:56px;border-radius:18px;}
+  .opt .answerIcon{font-size:clamp(26px,6vw,38px);margin-bottom:1px;}
+  .opt .answerText{font-size:clamp(16px,3.8vw,22px);}
+  .it{font-size:clamp(20px,4vw,30px);}
+  .cell{width:clamp(30px,6vw,42px);height:clamp(30px,6vw,42px);font-size:clamp(22px,4.5vw,32px);}
+  .tenframe{padding:4px;gap:3px;}
+  .compareCard,.groupCard{padding:5px 6px;border-width:3px;border-radius:16px;box-shadow:0 3px 0 var(--sombra);}
+  .groupTitle{font-size:clamp(13px,3vw,16px);margin-bottom:3px;}
+  .box{padding:5px;gap:4px;margin:2px;border-radius:12px;}
+  .arrayBox .it,.groupBox .it{font-size:clamp(16px,3.6vw,24px);}
+  .compareCard.mediumItems .it,.compareCard.manyItems .it{font-size:clamp(16px,3.6vw,24px);}
+  .rod{width:12px;height:42px;border-width:1px;}
+  .unit{width:12px;height:12px;border-width:1px;}
+  .units{grid-template-columns:repeat(2,12px);gap:2px;}
+  .pv{gap:4px;margin:2px 4px;}
+  .part{padding:5px 7px;border-width:3px;border-radius:14px;margin:2px;}
+}
+
 </style>
 </head>
 <body>
@@ -207,7 +281,7 @@ body.compactQuestion .visualPair{gap:10px;}
   <div class="bigUni">🦄</div>
   <h1>Las Matemáticas<br>Mágicas de Lumi</h1>
   <p>Un juego infinito que enseña desde cero: una idea nueva a la vez, mucho repaso, y sin saltarse pasos.</p>
-  <button class="bigBtn" id="playBtn" type="button" onclick="startGame(event)">¡Jugar! ▶</button>
+  <button class="bigBtn" id="playBtn" type="button">¡Jugar! ▶</button>
   <button class="smallBtn" id="resetStart">Reiniciar progreso</button>
   <p class="mini">Para mamá y papá: el juego avanza por dominio de habilidades, no por velocidad. Si hay errores, vuelve a ejercicios más concretos.</p>
 </div>
@@ -230,12 +304,12 @@ function tensOptions(correct){const set=new Set([correct]);let g=0;while(set.siz
 function tenframe(n,item){let s='';for(let i=0;i<10;i++)s+='<div class="cell'+(i<n?' full':'')+'">'+(i<n?item:'')+'</div>';return '<div class="tenframe">'+s+'</div>'}
 function multiFrame(n,item){let s='<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">';let left=n;if(left===0)s+=tenframe(0,item);while(left>0){const f=Math.min(10,left);s+=tenframe(f,item);left-=f}return s+'</div>'}
 function groupHTML(n,item){let s='';for(let i=0;i<n;i++)s+='<span class="it">'+item+'</span>';return '<div class="grp" aria-label="grupo de '+n+' objetos">'+s+'</div>'}
-function groupCardHTML(n,item,label){return '<div class="compareCard"><div class="groupTitle">'+label+'</div>'+groupHTML(n,item)+'</div>'}
+function groupCardHTML(n,item,label){const cls=n>10?' manyItems':(n>6?' mediumItems':'');const inner=n>10?multiFrame(n,item):groupHTML(n,item);return '<div class="compareCard'+cls+'"><div class="groupTitle">'+label+'</div>'+inner+'</div>'}
 function seqHTML(arr){return '<div class="seq">'+arr.map(v=>'<div class="num '+(v==='?'?'q':'')+'">'+v+'</div>').join('')+'</div>'}
 function base10HTML(num,label){const t=Math.floor(num/10),o=num%10;let rs='',us='';for(let i=0;i<t;i++)rs+='<div class="rod"></div>';for(let i=0;i<o;i++)us+='<div class="unit"></div>';return '<div class="part"><div class="pv"><div class="rods">'+rs+'</div><div class="units">'+us+'</div></div>'+(label?'<div class="label">'+label+'</div>':'')+'</div>'}
 function looseTenHTML(){let u='';for(let i=0;i<10;i++)u+='<div class="unit"></div>';return '<div class="part"><div class="units" style="grid-template-columns:repeat(5,15px)">'+u+'</div><div class="label">10 unidades</div></div>'}
-function boxesHTML(g,per,item){let s='<div style="display:flex;gap:9px;flex-wrap:wrap;justify-content:center">';for(let i=0;i<g;i++){let inn='';for(let j=0;j<per;j++)inn+='<span class="it">'+item+'</span>';s+='<div class="box" style="grid-template-columns:repeat('+Math.min(per,3)+',1fr)">'+inn+'</div>'}return s+'</div>'}
-function arrayHTML(r,c,item,hi){let s='';for(let i=0;i<r*c;i++){const h=hi!=null&&Math.floor(i/c)===hi;s+='<span class="it" style="'+(h?'background:#fff3b0;border-radius:8px;box-shadow:0 0 0 2px #ffcf4d inset':'')+'">'+item+'</span>'}return '<div class="box" style="grid-template-columns:repeat('+c+',1fr);border-style:solid;border-color:var(--menta)">'+s+'</div>'}
+function boxesHTML(g,per,item){let s='<div class="equalBoxes">';for(let i=0;i<g;i++){let inn='';for(let j=0;j<per;j++)inn+='<span class="it">'+item+'</span>';s+='<div class="box groupBox" style="grid-template-columns:repeat('+Math.min(per,3)+',1fr)">'+inn+'</div>'}return s+'</div>'}
+function arrayHTML(r,c,item,hi){let s='';for(let i=0;i<r*c;i++){const h=hi!=null&&Math.floor(i/c)===hi;s+='<span class="it" style="'+(h?'background:#fff3b0;border-radius:8px;box-shadow:0 0 0 2px #ffcf4d inset':'')+'">'+item+'</span>'}return '<div class="box arrayBox" style="grid-template-columns:repeat('+c+',1fr);border-style:solid;border-color:var(--menta)">'+s+'</div>'}
 function barSVG(parts,shaded,w){w=w||210;const h=44,pw=w/parts;let r='';for(let i=0;i<parts;i++){r+='<rect x="'+(i*pw).toFixed(1)+'" y="0" width="'+pw.toFixed(1)+'" height="'+h+'" fill="'+(i<shaded?'#a972ff':'#efe3ff')+'" stroke="#fff" stroke-width="3"/>'}return '<svg viewBox="0 0 '+w+' '+h+'" width="'+Math.min(w,240)+'" height="'+h+'">'+r+'</svg>'}
 const FRAC={2:'un medio',3:'un tercio',4:'un cuarto'};
 function mkCount(max){const n=rint(1,max),it=choice(ITEMS);return{prompt:'¿Cuántas hay?',speak:'¿Cuántas hay? Tócalas una por una para contar.',visual:multiFrame(n,it),options:numOptions(n,3,1,max),retry:'Tócalas una por una. Cada toque es un número.',win:'¡Hay '+n+'!',topic:'Conteo hasta '+max}}
@@ -380,7 +454,7 @@ function advanceLevel(){
   }
 }
 function reset(){try{localStorage.removeItem(SAVE_KEY)}catch(e){}state={level:1,stars:0,gems:0,streak:0,totalCorrect:0,totalWrong:0,mastery:{},errors:{},introduced:[],recent:null};updateHUD();parentInfo()}
-function startGame(ev){if(ev&&ev.preventDefault)ev.preventDefault();initAudio();try{if(actx&&actx.state==='suspended')actx.resume()}catch(e){}$('start').style.display='none';startMusic();updateHUD();newProblem()}
+function startGame(ev){if(ev&&ev.preventDefault)ev.preventDefault();if($('start').style.display==='none')return;initAudio();try{if(actx&&actx.state==='suspended')actx.resume()}catch(e){}$('start').style.display='none';startMusic();updateHUD();newProblem()}
 function bindTap(id,fn){const el=$(id);if(!el)return;el.addEventListener('click',fn);el.addEventListener('touchend',function(ev){ev.preventDefault();fn(ev)},{passive:false});}
 bindTap('playBtn',startGame);bindTap('replay',()=>{if(current)speak(current.speak)});$('muteBtn').addEventListener('click',()=>{muted=!muted;$('muteBtn').textContent=muted?'🔇':'🔊';if(muted&&'speechSynthesis'in window)speechSynthesis.cancel()});$('parentBtn').addEventListener('click',()=>{$('parentPanel').style.display='block';parentInfo()});$('closeParent').addEventListener('click',()=>{$('parentPanel').style.display='none'});$('advanceBtn').addEventListener('click',advanceLevel);$('resetBtn').addEventListener('click',()=>{reset();$('parentPanel').style.display='none';$('start').style.display='flex'});$('resetStart').addEventListener('click',reset);
 buildSparkles();load();updateHUD();parentInfo();
